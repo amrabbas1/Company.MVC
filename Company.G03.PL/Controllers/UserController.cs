@@ -31,9 +31,13 @@ namespace Company.G03.PL.Controllers
 					FirstName = U.FirstName,
 					LastName = U.LastName,
 					Email = U.Email,
-					Roles = _userManager.GetRolesAsync(U).Result
 				}).ToListAsync();
-			}
+
+                foreach (var user in users)
+                {
+                    user.Roles = await _userManager.GetRolesAsync(await _userManager.FindByIdAsync(user.Id));
+                }
+            }
 			else
 			{
 				users = await _userManager.Users.Where(U => U.Email
@@ -45,9 +49,13 @@ namespace Company.G03.PL.Controllers
 						FirstName = U.FirstName,
 						LastName = U.LastName,
 						Email = U.Email,
-						Roles = _userManager.GetRolesAsync(U).Result
 					}).ToListAsync();
-			}
+
+                foreach (var user in users)
+                {
+                    user.Roles = await _userManager.GetRolesAsync(await _userManager.FindByIdAsync(user.Id));
+                }
+            }
 
 			return View(users);
 		}
@@ -67,8 +75,9 @@ namespace Company.G03.PL.Controllers
 				FirstName = UserFromDb.FirstName,
 				LastName = UserFromDb.LastName,
 				Email = UserFromDb.Email,
-				Roles = _userManager.GetRolesAsync(UserFromDb).Result
 			};
+
+            user.Roles = await _userManager.GetRolesAsync(await _userManager.FindByIdAsync(user.Id));
 
             return View(ViewName, user);
         }
@@ -76,7 +85,6 @@ namespace Company.G03.PL.Controllers
         {
             return await Details(id, "Edit");
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]//btmn3 ay request mn app khargy zy el postman msln
         public async Task<IActionResult> Edit([FromRoute] string id, UserViewModel model)
@@ -84,7 +92,7 @@ namespace Company.G03.PL.Controllers
            
             if (id != model.Id)
                 return BadRequest();
-            //if(ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 var userFromDb = await _userManager.FindByIdAsync(id);
                 if (userFromDb == null)
@@ -115,7 +123,7 @@ namespace Company.G03.PL.Controllers
             if (id != model.Id)
                 return BadRequest();
 
-            //if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var userFromDb = await _userManager.FindByIdAsync(id);
                 if (userFromDb == null)

@@ -58,7 +58,7 @@ namespace Company.G03.PL.Controllers
             {
                 Name = model.RoleName
             };
-            //if(ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 await _roleManager.CreateAsync(role);
                 return RedirectToAction("Index");
@@ -98,7 +98,7 @@ namespace Company.G03.PL.Controllers
 
             if (id != model.Id)
                 return BadRequest();
-            //if(ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 var roleFromDb = await _roleManager.FindByIdAsync(id);
 
@@ -127,7 +127,7 @@ namespace Company.G03.PL.Controllers
         {
             if (id != model.Id)
                 return BadRequest();
-            //if(ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 var roleFromDb = await _roleManager.FindByIdAsync(id);
 
@@ -184,7 +184,7 @@ namespace Company.G03.PL.Controllers
             if (role is null)
                 return NotFound();
 
-            //if(ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 foreach (var user in users)
                 {

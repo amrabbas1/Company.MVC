@@ -10,7 +10,7 @@ using System.Collections.ObjectModel;
 
 namespace Company.G03.PL.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class UserController : Controller
 	{
 		private readonly UserManager<ApplicationUser> _userManager;

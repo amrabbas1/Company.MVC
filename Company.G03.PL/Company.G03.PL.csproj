@@ -20,10 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Files\Images\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Update="Views\User\Delete.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
@@ -36,6 +32,10 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Files\Images\" />
   </ItemGroup>
 
 </Project>

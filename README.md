@@ -8,7 +8,7 @@ This is a **.NET MVC Company Management System** that allows administrators to m
   - Department Management
   - Employee Management
   - Account Management
-  - Role 
+  - Role Management
   - User Management  
 - **Functionality:**
   - Search for employees, users, and roles
